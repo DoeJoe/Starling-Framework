@@ -759,17 +759,19 @@ package starling.core
                 // On a system that supports both mouse and touch input, the primary touch point
                 // is dispatched as mouse event as well. Since we don't want to listen to that
                 // event twice, we ignore the primary touch in that case.
+				
+				// edit je: nope, I want the primary touch not as mouse event :)
                 
-                if (Mouse.supportsCursor && touchEvent.isPrimaryTouchPoint) return;
-                else
-                {
+                //if (Mouse.supportsCursor && touchEvent.isPrimaryTouchPoint) return;
+                //else
+                //{
                     globalX  = touchEvent.stageX;
                     globalY  = touchEvent.stageY;
                     touchID  = touchEvent.touchPointID;
                     pressure = touchEvent.pressure;
                     width    = touchEvent.sizeX;
                     height   = touchEvent.sizeY;
-                }
+                //}
             }
             
             // figure out touch phase
