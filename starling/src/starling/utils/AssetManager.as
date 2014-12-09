@@ -118,7 +118,7 @@ package starling.utils
         private var mCheckPolicyFile:Boolean;
         private var mKeepAtlasXmls:Boolean;
         private var mKeepFontXmls:Boolean;
-        private var mMaxConnections:int;
+        private var mNumConnections:int;
         private var mVerbose:Boolean;
         private var mQueue:Array;
         
@@ -146,7 +146,7 @@ package starling.utils
             mXmls = new Dictionary();
             mObjects = new Dictionary();
             mByteArrays = new Dictionary();
-            mMaxConnections = 3;
+            mNumConnections = 3;
             mVerbose = true;
             mQueue = [];
         }
@@ -533,12 +533,13 @@ package starling.utils
         /** Enqueues a single asset with a custom name that can be used to access it later.
          *  If the asset is a texture, you can also add custom texture options.
          *  
-         *  @param asset:   The asset that will be enqueued; accepts the same objects as the
+         *  @param asset    The asset that will be enqueued; accepts the same objects as the
          *                  'enqueue' method.
-         *  @param name:    The name under which the asset will be found later. If you pass null or
+         *  @param name     The name under which the asset will be found later. If you pass null or
          *                  omit the parameter, it's attempted to generate a name automatically.
-         *  @param options: Custom options that will be used if 'asset' points to texture data.
-         *  @return         the name under which the asset was registered. */
+         *  @param options  Custom options that will be used if 'asset' points to texture data.
+         *  @return         the name with which the asset was registered.
+         */
         public function enqueueWithName(asset:Object, name:String=null,
                                         options:TextureOptions=null):String
         {
@@ -600,7 +601,7 @@ package starling.utils
             for (i=0; i<assetCount; ++i)
                 assetProgress[i] = 0.0;
 
-            for (i=0; i<mMaxConnections; ++i)
+            for (i=0; i<mNumConnections; ++i)
                 loadNextQueueElement();
 
             mQueue.length = 0;
@@ -1231,7 +1232,7 @@ package starling.utils
 
         /** The maximum number of parallel connections that are spawned when loading the queue.
          *  More connections can reduce loading times, but require more memory. @default 3. */
-        public function get maxConnections():int { return mMaxConnections; }
-        public function set maxConnections(value:int):void { mMaxConnections = value; }
+        public function get numConnections():int { return mNumConnections; }
+        public function set numConnections(value:int):void { mNumConnections = value; }
     }
 }
