@@ -365,7 +365,7 @@ package starling.core
             var currentProfile:String;
             
             if (profile == "auto")
-                profiles = ["standard", "standardConstrained", "baselineExtended", "baseline", "baselineConstrained"];
+                profiles = ["standardExtended", "standard", "standardConstrained", "baselineExtended", "baseline", "baselineConstrained"];
             else if (profile is String)
                 profiles = [profile as String];
             else if (profile is Array)
@@ -768,19 +768,18 @@ package starling.core
                 // On a system that supports both mouse and touch input, the primary touch point
                 // is dispatched as mouse event as well. Since we don't want to listen to that
                 // event twice, we ignore the primary touch in that case.
-				
-				// edit je: nope, I want the primary touch not as mouse event :)
                 
-                //if (Mouse.supportsCursor && touchEvent.isPrimaryTouchPoint) return;
-                //else
-                //{
+				// edit je: nope, I want the primary touch not as mouse event :)
+                // if (Mouse.supportsCursor && touchEvent.isPrimaryTouchPoint) return;
+                // else
+                // {
                     globalX  = touchEvent.stageX;
                     globalY  = touchEvent.stageY;
                     touchID  = touchEvent.touchPointID;
                     pressure = touchEvent.pressure;
                     width    = touchEvent.sizeX;
                     height   = touchEvent.sizeY;
-                //}
+                // }
             }
             
             // figure out touch phase
@@ -959,7 +958,14 @@ package starling.core
          *  Flash components. */ 
         public function get nativeOverlay():Sprite { return mNativeOverlay; }
         
-        /** Indicates if a small statistics box (with FPS, memory usage and draw count) is displayed. */
+        /** Indicates if a small statistics box (with FPS, memory usage and draw count) is
+         *  displayed.
+         *
+         *  <p>Beware that the memory usage should be taken with a grain of salt. The value is
+         *  determined via <code>System.totalMemory</code> and does not take texture memory
+         *  into account. It is recommended to use Adobe Scout for reliable and comprehensive
+         *  memory analysis.</p>
+         */
         public function get showStats():Boolean { return mStatsDisplay && mStatsDisplay.parent; }
         public function set showStats(value:Boolean):void
         {
@@ -1130,8 +1136,8 @@ package starling.core
          *  On some systems, an upcoming screensaver or entering sleep mode may 
          *  invalidate the render context. This setting indicates if Starling should recover from 
          *  such incidents.
-         *  <p>Beware: if used carelessly, this property may have a huge impact on memory
          *
+         *  <p>Beware: if used carelessly, this property may have a huge impact on memory
          *  consumption. That's because, by default, it will make Starling keep a copy of each
          *  texture in memory.</p>
          *
