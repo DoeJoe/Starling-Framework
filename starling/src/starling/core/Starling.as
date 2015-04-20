@@ -1130,8 +1130,8 @@ package starling.core
          *  On some systems, an upcoming screensaver or entering sleep mode may 
          *  invalidate the render context. This setting indicates if Starling should recover from 
          *  such incidents.
-         *
          *  <p>Beware: if used carelessly, this property may have a huge impact on memory
+         *
          *  consumption. That's because, by default, it will make Starling keep a copy of each
          *  texture in memory.</p>
          *
