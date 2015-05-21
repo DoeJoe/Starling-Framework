@@ -813,8 +813,8 @@ package starling.core
             if (multitouchEnabled)
                 types.push(TouchEvent.TOUCH_BEGIN, TouchEvent.TOUCH_MOVE, TouchEvent.TOUCH_END);
             
-            if (!multitouchEnabled || Mouse.supportsCursor)
-                types.push(MouseEvent.MOUSE_DOWN,  MouseEvent.MOUSE_MOVE, MouseEvent.MOUSE_UP);
+            //if (!multitouchEnabled || Mouse.supportsCursor)
+            //    types.push(MouseEvent.MOUSE_DOWN,  MouseEvent.MOUSE_MOVE, MouseEvent.MOUSE_UP);
                 
             return types;
         }
