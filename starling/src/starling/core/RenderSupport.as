@@ -685,7 +685,7 @@ package starling.core
             else if (smoothing == TextureSmoothing.BILINEAR)
                 options.push("linear", mipMapping ? "mipnearest" : "mipnone");
             else
-                options.push("linear", mipMapping ? "miplinear" : "mipnone");
+                options.push("anisotropic8x", mipMapping ? "miplinear" : "mipnone");
             
             return "<" + options.join() + ">";
         }
